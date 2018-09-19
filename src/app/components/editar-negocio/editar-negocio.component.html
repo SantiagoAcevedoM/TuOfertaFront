@@ -1,0 +1,94 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1>Edita tu negocio</h1>
+    <div *ngFor="let i of negocio">
+
+          <div class="row">
+          <form (ngSubmit)="editar(valor1.value, valor2.value)" class="form-signin col-xs-12 col-sm-12 col-md-12 col-lg-12 col" #forma="ngForm">
+
+            <div class="row">
+        
+              <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col">
+                <label for="inputZip">Nombre</label>
+                <input type="text" class="form-control" name="nombre" id="inputnombre" value={{negocioEdit.nombre_negocio}} [(ngModel)]="i.nombre_negocio" required>
+        
+              </div>
+        
+              <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col">
+                <label for="inputapellidos">NIT</label>
+                <input type="text" class="form-control" name="nit" id="inputnit" value={{negocioEdit.nit}} [(ngModel)]="i.nit" required>
+              </div>
+            </div>
+            <div class="row">
+        
+              <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col">
+                <label for="inputZip">Teléfono</label>
+                <input type="text" class="form-control" name="telefono" id="inputtelefono" value={{negocioEdit.telefono}} [(ngModel)]="i.telefono" required>
+              </div>
+        
+        
+              <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col">
+                <label for="inputZip">Correo</label>
+                <input type="email" class="form-control" name="correo" id="inputcorreo" value={{negocioEdit.correo}} [(ngModel)]="i.correo" required>
+              </div>
+        
+            </div>
+            <div class="row">
+        
+              <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 col" >
+                <label for="inputZip">Ubicación</label>
+                <input onchange="coordenadas()" type="text" class="form-control" name="ubicacion" id="ubicacion" value={{negocioEdit.ubicacion}} [(ngModel)]="i.ubicacion" required>
+              </div>
+              <input type="hidden" id="txtLatitud" value="{{negocioEdit.latitud}}" #valor1 name="latitud">
+              <input type="hidden" id="txtLongitud" value="{{negocioEdit.longitud}}" #valor2 name="longitud">
+        
+              <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 col">
+                <label for="inputZip">Tipo</label>
+                <select class="form-control" id="selecttipo" name="tipo" value={{negocioEdit.tipo}} [(ngModel)]="i.tipo" required>
+                  <option>Restaurante</option>
+                  <option>Bar</option>
+                  <option>Ropa</option>
+
+                </select>
+              </div>
+            </div>
+            <div class="row">
+        
+              <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col">
+                <label for="inputZip">Detalle</label>
+                <input type="text" class="form-control" id="inputdetalle" name="detalle" value={{negocioEdit.detalle}} [(ngModel)]="i.detalle" required >
+              </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-3 offset-md-2 fondo">
+                      <img src="{{negocioEdit.foto}}" class="calign">
+                       </div>
+                <div class="col-md-7">
+                  <label for="inputZip">Foto</label>
+                  <input type="file" class="form-control" id="inputfoto" accept=".png,.jpg" (change)="subirFoto($event)" required>
+                </div>
+              </div>
+        
+            <div class="d-flex justify-content-center p-3">
+              <!--
+              <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!form.valid" type="button" class="btn btn-primary">Registrarse</button>
+              -->
+              <button class="btn btn-lg btn-primary btn-block" type="submit" class="btn btn-primary">Editar</button>
+        
+        
+            </div>
+          </form>
+        </div>
+          <!--
+          <p>{{form.value | json}}</p>
+        -->
+        </div>
+  </div>
+  
+</div>
+
+
+<footer>
+    <p>TuOfertaAPP® 2018© </p>
+</footer>
+<agm-map></agm-map>

@@ -1,0 +1,155 @@
+<div class="row">
+
+  <div class="form-group offset-md-2 col-xs-4 col-sm-4 col-md-4 col-lg-4 col">
+    <p>Número de Usuarios: {{numusuarios}}</p>
+  </div>
+
+  <div class="form-group offset-md-2 col-xs-4 col-sm-4 col-md-4 col-lg-4 col">
+    <p>Número de Administradores: {{numadmins}}</p>
+
+  </div>
+</div>
+<div class="table-responsive">
+  <table class="table tcenter2">
+    <thead class="thead-dark tcenter">
+      <tr>
+        <!-- <th scope="col">ID</th> -->
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellidos</th>
+        <th scope="col">Correo</th>
+        <!-- <th scope="col">Contraseña</th> -->
+        <th scope="col">Telefono</th>
+        <th scope="col">Genero</th>
+        <!-- <th scope="col">Rol</th> -->
+        <th scope="col">Estado</th>
+        <!-- <th scope="col">Token</th> -->
+        <th scope="col">Eliminar</th>
+        <th scope="col">Actualizar</th>
+
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let user of Personas let i =index' class="valign2">
+        <!-- <td>{{user.id}}</td> -->
+        <td>{{user.nombre}}</td>
+        <td>{{user.apellidos}}</td>
+        <td>{{user.correo}}</td>
+        <!-- <td>{{user.contrasena}}</td> -->
+        <td>{{user.telefono}}</td>
+        <td>{{user.genero}}</td>
+        <!-- <td>{{user.rol}}</td> -->
+        <td>{{user.estado}}</td>
+        <!-- <td>{{user.token}}</td> -->
+        <td >
+          <button type="button"  class="btn btn-danger btn-centrado" (click)="seleccionarPersonaEliminar(user.id)"><i
+              class="fas fa-trash-alt"></i></button>
+        </td>
+        <td >
+          <button type="button"  class="btn btn-warning btn-centrado" data-toggle="modal" data-target="#editModal"
+            (click)="seleccionarPersonaEditar(user)"><i class="fas fa-pencil-alt"></i></button>
+
+        </td>
+
+
+
+      </tr>
+    </tbody>
+
+  </table>
+</div>
+<footer>
+  <p>TuOfertaAPP® 2018© </p>
+</footer>
+
+
+<!-- modal editar -->
+<div class="modal fade high " id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content espacio">
+      <div class="modal-header az">
+        <h5 class="modal-title" id="exampleModalLabel">Editar administrador</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" *ngFor="let i of persona">
+        <!-- <div class="container-fluid bd-example-row"> -->
+        <form class="form-signin">
+
+          <div class="row">
+
+            <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col">
+              <label for="inputZip">Nombre</label>
+              <input type="text" class="form-control" name="nombre" id="inputnombre" value="nombre" [(ngModel)]="i.nombre"
+                [ngModelOptions]="{standalone: true}">
+
+            </div>
+
+            <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col">
+              <label for="inputapellidos">Apellidos</label>
+              <input type="text" class="form-control" name="apellidos" id="inputapellidos" value="apellidos"
+                [(ngModel)]="i.apellidos" [ngModelOptions]="{standalone: true}">
+            </div>
+          </div>
+          <div class="row">
+
+            <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col">
+              <label for="inputZip">Correo</label>
+              <input type="text" class="form-control" id="inputcorreo" value="correo" [(ngModel)]="i.correo"
+                [ngModelOptions]="{standalone: true}">
+            </div>
+
+
+            <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col">
+              <label for="inputZip">Contraseña</label>
+              <input type="password" class="form-control" id="inputcontrasena" value="contrasena" [(ngModel)]="i.contrasena"
+                [ngModelOptions]="{standalone: true}">
+            </div>
+
+          </div>
+          <div class="row">
+
+            <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 col">
+              <label for="inputZip">Teléfono</label>
+              <input type="text" class="form-control" id="inputtelefono" value="telefono" [(ngModel)]="i.telefono"
+                [ngModelOptions]="{standalone: true}">
+            </div>
+
+
+            <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 col">
+              <label for="inputZip">Género</label>
+              <select class="form-control" id="selectgenero" value="genero" [(ngModel)]="i.genero" [ngModelOptions]="{standalone: true}">
+                <option selected="selected">Masculino</option>
+                <option>Femenino</option>
+                <option>Indefinido</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+
+            <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 col">
+              <label for="inputZip">Ciudad</label>
+              <input type="text" class="form-control" id="inputciudad" value="ciudad" [(ngModel)]="i.ciudad"
+                [ngModelOptions]="{standalone: true}">
+            </div>
+
+            <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 col">
+              <label for="selectrol">Rol</label>
+              <select class="form-control selectpicker" id="selectrol" value="rol" [(ngModel)]="i.rol" [ngModelOptions]="{standalone: true}">
+                <option>Usuario</option>
+                <option>Administrador</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer az">
+        <button type="button" class="btn btn-info" data-dismiss="modal">Cerrar</button>
+        <button (click)="editarPersona()" type="submit" class="btn btn-success" data-dismiss="modal">Editar persona</button>
+      </div>
+    </div>
+  </div>
+</div>

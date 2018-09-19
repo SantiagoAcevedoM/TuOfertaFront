@@ -1,0 +1,55 @@
+.calign{
+    vertical-align: center;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border-right: 1px solid lightgray;
+    padding-right: 3%;
+    padding-left: 3%;
+    border-radius:12%;
+    /* height: 26%;
+    width: 74%; */
+    height: 150px;
+    width: 150px;
+
+}
+
+.foto{
+    width:17%;
+}
+
+.tcenter >tr{
+    text-align:center;
+}
+.tcenter2{
+    text-align:center;
+    margin-bottom: 3%;
+
+}
+
+.valign2 >td{
+    vertical-align:middle;
+}
+.fondo{
+    margin-bottom: 3%;
+
+}
+
+.btn-centrado{
+    width:90px;
+    margin-left: 4%;
+}
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height:5%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    /*background-image: url()*/
+}
+.espacio{
+    margin-top: 8%;
+
+}

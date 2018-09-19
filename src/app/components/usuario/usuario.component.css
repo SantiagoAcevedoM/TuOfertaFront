@@ -1,0 +1,107 @@
+agm-map {
+    width: 100%;
+    height:100%;
+  }
+
+body {
+    background-image: url("../../../assets/images/oferta2.jpeg");
+    background-color: #cccccc;
+    position:fixed;
+    height:100%;
+    width:100%;
+    background-size: cover;
+ 
+
+ }
+.brd{
+    border-style:dotted;
+}
+ h1, p{
+     color: black
+ }
+ .cuadro{
+     width: 50px;
+     height: 50px;
+ }
+ .container{
+     margin-left: 40%;
+ }
+
+ .arriba{
+     margin-top: 4%;
+ }
+ .negro{
+     color: black;
+ }
+ .m-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-top: 3.8%;
+  }
+  .calign{
+    vertical-align: center;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border-right: 1px solid lightgray;
+    width: 30%;
+    height: 30%;
+    padding-right: 3%;
+    padding-left: 3%;
+    border-radius:12%;
+
+}
+.mat-checkbox-inner-container{
+    width: 8px;
+    height: 8px;
+}
+label {
+    width: 100% !important;
+    display: inline-block !important;
+}
+.cerrado{
+    width:22%;
+    margin-top: 0.5%;
+
+}
+.filtro{
+    margin-top: 4.8%;
+    background-color:  slategrey;
+    z-index: 9999999999;
+    position: fixed;
+    width: 100%;
+    display:flex;
+    flex-direction:row;
+    
+
+}
+.ctr{
+    height: 85%;
+    margin-left: 9%;
+    margin-top: 1%;
+}
+
+.tipofiltro{
+    margin-left: 2%;
+
+}
+.filtrado {
+    top: 15%;
+    right:  10px; 
+}
+
+
+.flotante {
+    position: absolute; 
+    z-index: 99;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.897);
+    font-size: smaller;
+    width: 10%;
+}
+
+
+     
+    

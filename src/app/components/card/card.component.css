@@ -1,0 +1,106 @@
+.stretch{
+    display: inline-block;
+    width: 46%;
+    margin: 2%;
+    border-radius: 20px;
+
+}
+/* Contenedor botones */
+.botones{
+    position: absolute;
+    bottom: 0;
+    width: 65%;
+    right: 0;
+    margin-bottom: 1%;
+    border-top: 1px solid lightgray;
+    text-align: right;
+
+}
+.cuadro{
+    top:0;
+    max-width: 40%;
+    max-height: 40%;
+    border-right: solid 1px lightgray;
+    margin-top:0;
+    padding-top:0;
+    margin-bottom:13%;
+}
+.valign{
+    vertical-align: middle;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border-right: 1px solid lightgray;
+    width: 35%;
+    padding-right: 3%;
+    padding-left: 3%;
+    border-radius:12%;
+
+}
+.calign{
+    vertical-align: center;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border-right: 1px solid lightgray;
+    width: 74%;
+    padding-right: 3%;
+    padding-left: 3%;
+    border-radius:12%;
+
+}
+
+.btn-centrado{
+    width:25%;
+    margin:1%;
+    position:relative;
+    margin-right:2%;
+}
+
+.ajustado{
+    display:inline-block;
+    margin-right: 3%;
+    width:57%;
+    height: 40%;
+    vertical-align: middle;
+    margin-left: 5%;
+    margin-bottom: 13%;
+    
+}
+.centrado{
+    margin-left: 2%;
+    width: 96%;
+    align-content: center;
+    margin-top: 4%;
+}
+/* Modal de eliminar */
+.high{
+    margin-top: 4%;
+}
+/* btn de agregar oferta */
+.der{
+    margin-left: 87.8%;
+}
+/* head y footer del modal */
+.az{
+    background-color: lightblue;
+
+}
+/* margen entre inputs */
+.fondo{
+    margin-bottom: 3%;
+
+}
+h5{
+    text-align: center;
+
+}
+/* Landscape phones and down */
+@media (max-width: 480px) { 
+    .stretch{
+        width: 80%;
+        margin: 2%;
+        margin-top: 3%;
+        margin-left:10%;
+    }
+
+
+}

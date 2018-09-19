@@ -1,0 +1,100 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1>Registra un negocio</h1>
+    <div *ngFor="let i of negocio">
+
+          <div class="row">
+          <form class="form-signin col-xs-12 col-sm-12 col-md-12 col-lg-12 col" #registro="ngForm">
+
+            <div class="row">
+        
+              <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col">
+                <label for="inputZip">Nombre</label>
+                <input type="text" class="form-control" name="nombre" id="inputnombre"  [(ngModel)]="i.nombre_negocio" required>
+        
+              </div>
+        
+              <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col">
+                <label for="inputapellidos">NIT</label>
+                <input type="text" class="form-control" name="nit" id="inputnit" [(ngModel)]="i.nit" required>
+              </div>
+            </div>
+            <div class="row">
+        
+              <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col">
+                <label for="inputZip">Teléfono</label>
+                <input type="text" class="form-control" name="telefono" id="inputtelefono"  [(ngModel)]="i.telefono" required>
+              </div>
+        
+        
+              <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col">
+                <label for="inputZip">Correo</label>
+                <input type="email" class="form-control" name="correo" id="inputcorreo"  [(ngModel)]="i.correo" required>
+              </div>
+        
+            </div>
+            <div class="row">
+        
+              <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 col" >
+                <label for="inputZip">Ubicación</label>
+                <input onchange="coordenadas()" type="text" class="form-control" name="ubicacion" id="ubicacion"  [(ngModel)]="i.ubicacion"  >
+              </div>
+              <input type="hidden" id="txtLatitud" value="" #valor1 name="latitud">
+              <input type="hidden" id="txtLongitud" value="" #valor2 name="longitud">
+
+        
+        
+              <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 col">
+                <label for="inputZip">Tipo</label>
+                <select class="form-control" id="selecttipo" name="tipo"  [(ngModel)]="i.tipo" required>
+                  <option>Restaurante</option>
+                  <option>Bar</option>
+                  <option>Almacen</option>
+                  <option>Otros</option>
+
+
+                </select>
+              </div>
+            </div>
+            <div class="row">
+        
+              <div class="form-group col-xs-8 col-sm-8 col-md-12 col-lg-12 col">
+                <label for="inputZip">Detalle</label>
+                <input type="text" class="form-control" id="inputdetalle" name="detalle" [(ngModel)]="i.detalle" required >
+              </div>
+              </div>
+
+              <div class="row">
+                  <div class="col-md-3 offset-md-2 fondo">
+                      <img src="{{i.foto}}" class="calign">
+                       </div>
+                <div class="col-md-7">
+                  <label for="inputZip">Foto</label>
+                  <input type="file" class="form-control" id="inputfoto" accept=".png,.jpg" (change)="subirFoto($event)" required>
+                </div>
+              </div>
+        
+            <div class="d-flex justify-content-center p-3">
+              <!--
+              <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!form.valid" type="button" class="btn btn-primary">Registrarse</button>
+              -->
+              <button class="btn btn-lg btn-primary btn-block" type="button" class="btn btn-primary" (click)="crear_negocio(valor1.value, valor2.value)">Crear</button>
+        
+        
+            </div>
+          </form>
+        </div>
+        <agm-map>
+      </agm-map>
+          <!--
+          <p>{{form.value | json}}</p>
+        -->
+        </div>
+  </div>
+  
+</div>
+
+
+<footer>
+    <p>TuOfertaAPP® 2018© </p>
+</footer>

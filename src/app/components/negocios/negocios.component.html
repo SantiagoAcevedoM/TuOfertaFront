@@ -1,0 +1,154 @@
+<!--<section>-->
+  <div>
+    <h5>Negocios</h5>
+      <button type="button"  class="btn btn-success btn-centrado-2" data-toggle="modal" data-target="#Modal" data-keyboard=false data-backdrop="static" (click)="limpiarModal()"><i class="fas fa-cart-plus"></i> Crear Negocio
+      </button>
+  </div>
+
+<div class="table-responsive alineada">
+  <table class="table table-striped table-bordered ">
+    <thead class="thead-dark tcenter">
+      <tr>
+
+        <th scope="col">Foto</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Telefono</th>
+        <th scope="col">Correo</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Ubicacion</th>
+        <th scope="col">Detalle</th>
+        <th scope="col">Eliminar</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Ofertas</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let negocio of Negocios let i =index' class="valign2">
+        <td class="foto"><img src="{{negocio.foto}}" class="calign">
+        </td>
+        <td>{{negocio.nombre_negocio}}</td>
+        <td>{{negocio.telefono}}</td>
+        <td>{{negocio.correo}}</td>
+        <td>{{negocio.tipo}}</td>
+        <td>{{negocio.ubicacion}}</td>
+        <td>{{negocio.detalle}}</td>
+        <td>
+          <button type="button"  class="btn btn-danger btn-centrado" (click)="eliminarNegocios(negocio.idnegocio)"><i class="fas fa-trash-alt"></i></button>
+        </td>
+        <td>
+            <button type="button"  class="btn btn-warning btn-centrado" data-toggle="modal" data-target="#Modal" data-keyboard=false data-backdrop="static" (click)="seleccionarNegocioEditar(negocio)"><i class="fas fa-pencil-alt"></i>
+            </button>
+        </td>
+        <td>
+          
+            <!-- <button type="button"  class="btn btn-success btn-centrado" data-toggle="modal" data-target="#ofertasModal"><i class="fas fa-piggy-bank"></i>
+              </button> -->
+              <button [routerLink]="['/ofertas', negocio.idnegocio]" type="button"  class="btn btn-success btn-centrado"><i class="fas fa-piggy-bank"></i></button>
+        </td>
+
+
+
+      </tr>
+    </tbody>
+
+  </table>
+</div>
+<!--</section>-->
+
+<footer>
+  <p>TuOfertaAPP® 2018© </p>
+</footer>
+
+  
+  <!-- modal editar -->
+  <div class="modal fade high" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content espacio" >
+          <div class="modal-header az">
+            <h5 class="modal-title" id="exampleModalLabel">{{infonegocio.idnegocio != "" ? 'Editar' : 'Crear' }} Negocio</h5>
+            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+              <span aria-hidden="true" (onclick)="limpiarModal()">&times;</span> 
+            </button> -->
+          </div>
+          <div class="modal-body" *ngFor="let i of negocio">
+            <!-- <div class="container-fluid bd-example-row"> -->
+            <form class="form-signin">
+    
+              <div class="row">
+                <div class="col-md-5 fondo">
+                  <label for="inputZip">Nombre</label>
+                  <input type="text" class="form-control" name="producto" id="inputnombre" value="nombre_negocio" [(ngModel)]="i.nombre_negocio"
+                    required>
+    
+                </div>
+                <div class="col-md-5 offset-md-2">
+                  <label for="inputZip">NIT</label>
+                  <input type="text" class="form-control" name="valor" id="inputvalor" value="nit" [(ngModel)]="i.nit"
+                    required>
+                </div>
+              </div>
+    
+              <div class="row">
+                <div class="col-md-5 fondo">
+                  <label for="inputZip">Telefono</label>
+                  <input type="text" class="form-control" name="descuento" id="inputdescuento" value="telefono"
+                    [(ngModel)]="i.telefono" required>
+    
+                </div>
+                <div class="col-md-5 offset-md-2">
+                  <label for="inputZip">Correo</label>
+                  <input type="email" class="form-control" name="detalle" id="inputdetalle" value="correo" [(ngModel)]="i.correo"
+                    required>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-5 fondo">
+                  <label for="inputZip">Ubicación</label>
+                  <input onchange="coordenadas()" type="text" class="form-control" name="fechainicio" id="ubicacion" value="ubicacion"
+                    [(ngModel)]="i.ubicacion" required>
+
+                </div>
+                <div class="form-group col-xs-12 col-sm-12 col-md-5 col-lg-5 offset-md-2 offset-lg-2 col">
+                    <label for="inputZip">Tipo Oferta</label>
+                    <select class="form-control" id="selecttipo" name="tipo"  [(ngModel)]="i.tipo" required>
+                        <option>Restaurante</option>
+                        <option>Bar</option>
+                        <option>Almacen</option>
+                        <option>Otros</option>
+                      </select>
+                  </div>
+              </div>
+              <hr>
+              <div class="row">
+                  <div class="col-md-5  fondo">
+                      <label for="inputZip">Detalle</label>
+                      <input type="text" class="form-control" name="fechainicio" id="fechainicio" value="detalle"
+                        [(ngModel)]="i.detalle" required>
+                    </div>
+                <div class="col-md-3 fondo">
+                  <img src="{{i.foto}}" class="calign">
+                </div>
+                <div class="col-md-4">
+                  <label for="inputZip">Foto</label>
+                  <input type="file" class="form-control" id="inputfoto" accept=".png,.jpg" (change)="subirFoto($event)"
+                    required>
+                </div>
+              </div>
+
+            </form>
+            <agm-map></agm-map>
+          </div>
+    
+          <div class="modal-footer az">
+              <input type="hidden" id="txtLatitud" value="" #valor1 name="latitud">
+              <input type="hidden" id="txtLongitud" value="" #valor2 name="longitud">
+            <button type="submit" class="btn btn-info" data-dismiss="modal" (onclick)="limpiarModal()">Cerrar</button>
+          <button *ngIf="infonegocio.idadmin == ''" (click)="crearNegocio(valor1.value, valor2.value)" type="submit" class="btn btn-success" data-dismiss="modal">Crear negocio</button>
+          <button *ngIf="infonegocio.idadmin != ''" (click)="editarNegocio()" type="submit" class="btn btn-success" data-dismiss="modal">Editar negocio</button>
+
+        </div>
+        </div>
+      </div>
+    </div>
+<!-- modal crear negocio -->

@@ -1,0 +1,149 @@
+<!-- <div class="container">
+      <h1>Bienvenido a TuOferta</h1> 
+      <p>Aquí encontrarás las mejores ofertas cerca de ti.</p> 
+  </div> -->
+<!-- <mat-toolbar color="primary" class="arriba">
+    <span>Ofertas</span>
+  </mat-toolbar>
+
+  <mat-progress-bar mode="indeterminate">
+  </mat-progress-bar> -->
+
+<!-- <mat-card class="example-card">
+    <mat-card-title>
+      <p class="negro">prueba</p>
+    </mat-card-title>
+    <mat-card-content>
+      </mat-card> -->
+<!-- <div class="filtro">
+          <p>Filtros: </p>
+          <mat-form-field class="tipofiltro">
+          <mat-select [(value)]="tipoNegocioSeleccionado">
+          <mat-option>Tipo de negocio</mat-option>
+          <mat-option value="RESTAURANTES">Restaurantes</mat-option>
+          <mat-option value="HOTELES">Hoteles</mat-option>
+          <mat-option value="BARES">Bares</mat-option>
+          <mat-option value="OTROS">Otros</mat-option>
+          </mat-select>
+          </mat-form-field>
+          <mat-form-field class="tipofiltro">
+          <mat-select [(value)]="tipoOfertaSeleccionado">
+          <mat-option>Tipo de oferta</mat-option>
+          <mat-option value="Descuento">Descuentos</mat-option>
+          <mat-option value="Promocion">Promociones</mat-option>
+          </mat-select>
+          </mat-form-field>
+          <div class="flex-spacer"></div>
+          <button mat-stroked-button class="ctr" (click)="traerTipos()">
+          Aplicar filtros
+          </button>
+          </div> 
+            -->
+
+<mat-sidenav-container class="m-container">
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened" class="cerrado">
+    <!-- <h3>Bienvenido(a) {{nombre}}</h3> -->
+
+    <div class="card bg-light text-info stretch" *ngFor="let oferta of Ofertas; let n = index">
+      <img src="{{oferta.foto}}" class="calign">
+      <div class="card-body ajustado">
+        <h5 class="card-title">{{oferta.producto}}</h5>
+        <p class="card-text">Del {{oferta.fecha_inicio}} al {{oferta.fecha_final}}</p>
+        <p class="card-text text-muted">Valor: {{oferta.valor}}</p>
+        <p class="card-text text-muted">{{oferta.tipo}}: {{oferta.descuento}}</p>
+      </div>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <!-- <p><mat-checkbox [(ngModel)]="opened">sidenav.opened</mat-checkbox></p>
+            <p><button mat-button (click)="sidenav.toggle()">sidenav.toggle()</button></p>
+            <p>Events:</p>
+            <div class="example-events">
+              <div *ngFor="let e of events">{{e}}</div>
+            </div> -->
+    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="14">
+
+      <agm-marker *ngFor='let i of Negocios' [latitude]="+i.latitud" [longitude]="+i.longitud" (markerClick)="openIW(infoWindow)"
+        label={{i.nombre_negocio}}>
+        <agm-info-window class="brd" #infoWindow>
+          <div>
+            <h5> {{i.nombre_negocio}}</h5>
+            <strong>{{i.ubicacion}}</strong>
+            <br>
+            <p>{{i.tipo}}</p>
+            <img src="{{i.foto}}" class="cuadro">
+
+            <button (click)="sidenav.toggle(); mostrarOferta(i.idnegocio)"><i class="fas fa-search-location" (opened)="mostrarOferta(i.id)"
+                (closed)="cerrar()"></i>Ver más ofertas</button>
+          </div>
+
+        </agm-info-window>
+      </agm-marker>
+
+    </agm-map>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<mat-card class="flotante filtrado">
+  <mat-card-title align="center"><small>Filtrado</small></mat-card-title>
+  <mat-card-subtitle align="center">Tipos de negocio</mat-card-subtitle>
+  <mat-card-content>
+    <section class="columna-filtros">
+      <mat-checkbox *ngFor="let tipoN of tiposNegocios; let i = index" (click)="editarFiltrosNegocios(tipoN);sidenav.open()"
+        [(ngModel)]="nSeleccionados[i]">{{tipoN}}</mat-checkbox>
+    </section>
+  </mat-card-content>
+  <mat-card-subtitle align="center">Tipos de oferta</mat-card-subtitle>
+  <mat-card-content>
+    <section class="columna-filtros">
+      <mat-checkbox *ngFor="let tipoO of tiposOfertas; let i = index" (click)="editarFiltrosOfertas(tipoO);sidenav.open()"
+        [(ngModel)]="oSeleccionados[i]" >{{tipoO}}</mat-checkbox>
+    </section>
+  </mat-card-content>
+  <mat-card-content *ngIf="oSeleccionados[0]">
+    <mat-card-subtitle align="center">Tipos de descuento</mat-card-subtitle>
+    <section class="columna-filtros">
+      <mat-select placeholder="Tipo de descuento" [(ngModel)]="tiposDescuento"  required>
+        <mat-option>Todos los tipos</mat-option>
+        <mat-option *ngFor="let tipoD of tiposDescuento" [value]="tipoD">
+          {{tipoD}}
+        </mat-option>
+      </mat-select>
+    </section>
+  </mat-card-content>
+  <mat-card-content *ngIf="oSeleccionados[1]">
+    <mat-card-subtitle align="center">Tipos de promoción</mat-card-subtitle>
+    <section class="columna-filtros">
+      <mat-select placeholder="Tipo de promoción" [(ngModel)]="tiposPromocion"  required>
+        <mat-option>Todos los tipos</mat-option>
+        <mat-option *ngFor="let tipoO of tiposPromocion" [value]="tipoO">
+          {{tipoO}}
+        </mat-option>
+      </mat-select>
+    </section>
+  </mat-card-content>
+
+  <mat-card-actions align="center">
+    <button mat-button (click)="limpiarFiltros(); sidenav.open()"><small>LIMPIAR FILTROS</small></button>
+  </mat-card-actions>
+</mat-card>
+<!-- <agm-map [latitude]="lat" [longitude]="lng" [zoom]="13">
+  <agm-marker *ngFor='let i of Negocios' [latitude]="+i.latitud" [longitude]="+i.longitud">
+    <agm-info-window class="brd">
+      <div>
+        <h5> {{i.nombre_negocio}}</h5>
+        <strong>{{i.ubicacion}}</strong>
+        <br>
+        <p>{{i.tipo}}</p>
+        <img src="{{i.foto}}" class="cuadro">
+
+        <button><i class="fas fa-search-location"></i>Ver más ofertas</button>
+      </div>
+
+    </agm-info-window>
+  </agm-marker>
+
+</agm-map> -->
+
+<!-- </mat-card-content> -->

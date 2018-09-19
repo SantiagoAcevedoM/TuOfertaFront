@@ -1,0 +1,70 @@
+<div mat-dialog-title class="modal " id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" >
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header az">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Oferta</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div mat-dialog-content class="modal-body" *ngFor="let i of data.base.oferta">
+        <!-- <div class="container-fluid bd-example-row"> -->
+          <form [formGroup]="form" class="form-signin">
+
+            <div class="row">
+              <div class="col-md-5 fondo">
+                <label for="inputZip">Producto</label>
+                <input formControlName="productName" type="text" class="form-control" name="nombre" id="inputnombre" value="nombre"  required>
+
+              </div>
+              <div class="col-md-5 offset-md-2">
+                <label for="inputZip">Valor</label>
+                <input formControlName="productPrice" type="text" class="form-control" name="nombre" id="inputvalor"  required>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-5 fondo">
+                <label for="inputZip">Descuento</label>
+                <input formControlName="discount" type="text" class="form-control" name="nombre" id="inputdescuento"  required>
+
+              </div>
+              <div class="col-md-5 offset-md-2">
+                <label for="inputZip">Detalle</label>
+                <input formControlName="productDetail" type="text" class="form-control" name="nombre" id="inputdetalle"  required>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-5 fondo">
+                <label for="inputZip">Fecha Inicial</label>
+                <input type="date" class="form-control" name="nombre" id="fechainicio"  required>
+
+              </div>
+              <div class="col-md-5 offset-md-2">
+                <label for="inputZip">Fecha Final</label>
+                <input type="date" class="form-control" name="nombre" id="fechafinal"  required>
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="col-md-10 offset-md-1 fondo">
+                <label for="inputZip">Foto</label>
+                <input type="text" class="form-control" name="nombre" id="inputfoto" required>
+              </div>
+            </div>
+
+      <div class="modal-footer az">
+          <button type="button" class="btn btn-info" data-dismiss="modal">Cerrar</button>
+          <button (click)="editarOferta()" type="submit" class="btn btn-success" data-dismiss="modal">Editar</button>
+        </div>
+      </form>
+
+      </div>
+
+    </div>
+    
+  </div>
+  
+</div>

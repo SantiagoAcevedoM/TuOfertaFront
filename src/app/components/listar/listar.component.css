@@ -1,0 +1,42 @@
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    /*background-image: url()*/
+}
+.table{
+    width: 96%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+    margin-left: 2%;
+}
+.btn-centrado{
+    width:90px;
+    margin-left: 4%;
+}
+
+
+.foto{
+    width:17%;
+}
+
+.tcenter >tr{
+    text-align:center;
+}
+.tcenter2{
+    text-align:center;
+}
+
+.valign2 >td{
+    vertical-align:middle;
+}
+
+.espacio{
+    margin-top: 8%;
+
+}

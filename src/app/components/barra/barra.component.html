@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky">
+    <a class="navbar-brand" href="#"><i class="fas fa-tags"></i> TuOferta</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
+        </li> 
+    </ul>
+
+      <!-- <form class="form-inline" >
+          <button class="btn btn-outline-info my-2 my-sm-0" type="submit" *ngIf="sesion.estaLogeado" (click)="cerrarSesion()">Cerrar Sesión</button>
+        </form>     -->
+    </div> 
+    <!-- <button type="button" class="btn btn-danger btnsesion" *ngIf="sesion.estaLogeado">    <h6 >{{sesion.persona.nombre}} {{sesion.persona.apellidos}} </h6>
+    </button> -->
+    <button type="button" class="btn dropdown-toggle btnsesion"
+            data-toggle="dropdown" *ngIf="sesion.estaLogeado">
+            <i class="fas fa-user-circle"></i>  
+            {{sesion.persona.nombre}} {{sesion.persona.apellidos}}
+    </button>
+   
+    <ul class="dropdown-menu menubar" role="menu">
+      <li><a ><i class="far fa-user izq"></i>  Editar perfil</a></li>
+      <li class="divider"></li>
+      <li><a ><i class="fas fa-power-off"></i>  Cerrar Sesión</a></li>
+    </ul>
+  </nav>

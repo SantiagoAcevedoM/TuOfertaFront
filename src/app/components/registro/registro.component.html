@@ -1,0 +1,205 @@
+<!--
+<div class="container">
+  <div style="background: #6666ff !important" class="jumbotron">
+    <h1>Formulario de Registro</h1>
+    <p>Luego de registrarte podrás acceder a nuestra aplicación TuOfertaAPP</p>
+  </div>
+</div>
+
+
+<div class="d-flex justify-content-center">
+  
+  <form [formGroup]="form" (ngSubmit)="registrar(reg)" class="form-signin" #reg="ngForm">
+      <div class="form-group col-md-12">
+          <label for="inputZip">ID</label>
+          <input type="text" class="form-control" id="inputid" placeholder="ID">
+        </div>
+
+    <div class="form-group col-md-12">
+      <label for="inputZip">Nombre</label>
+      <input type="text" class="form-control" name="nombre" formControlName="nombre" id="inputnombre" placeholder="Nombre">
+      <div *ngIf="form.get('nombre').invalid && form.get('nombre').touched" class="error-text">
+        <span *ngIf=" form.get('nombre').hasError('required')">
+          Este campo es requerido
+        </span>
+        <span *ngIf=" form.get('nombre').hasError('minLength')">
+          Deben ser más de 3 carácteres
+        </span>
+        <span *ngIf=" form.get('nombre').hasError('maxLength')">
+          No puede tener más de 20 carácteres
+        </span>
+      </div>
+    </div>
+    <div class="form-group col-md-12">
+      <label for="inputapellidos">Apellidos</label>
+      <input type="text" class="form-control" name="apellidos" formControlName="apellidos" id="inputapellidos" placeholder="Apellidos">
+      <div *ngIf="form.get('apellidos').invalid && form.get('apellidos').touched" class="error-text">
+        <span *ngIf=" form.get('apellidos').hasError('required')">
+          Este campo es requerido
+        </span>
+        <span *ngIf=" form.get('apellidos').hasError('minLength')">
+          Deben ser más de 3 carácteres
+        </span>
+        <span *ngIf=" form.get('apellidos').hasError('maxLength')">
+          No puede tener más de 20 carácteres
+        </span>
+      </div>
+    </div>
+
+
+    <div class="form-group col-md-12">
+      <label for="inputZip">Correo</label>
+      <input type="text" class="form-control" formControlName="correo" id="inputcorreo" placeholder="Correo">
+      <div *ngIf="form.get('correo').invalid && form.get('correo').touched" class="error-text">
+        <span *ngIf=" form.get('correo').hasError('required')">
+          El correo es obligatorio
+        </span>
+        <span *ngIf=" form.get('correo').hasError('email')">
+          No cumple los requerimientos de correo
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group col-md-12">
+      <label for="inputZip">Contraseña</label>
+      <input type="password" class="form-control" formControlName="contrasena" id="inputcontrasena" placeholder="Contraseña">
+      <div *ngIf="form.get('contrasena').invalid && form.get('contrasena').touched" class="error-text">
+        <span *ngIf=" form.get('contrasena').hasError('required')">
+          Este campo es requerido
+        </span>
+        <span *ngIf=" form.get('contrasena').hasError('minLength')">
+          Deben ser más de 8 carácteres
+        </span>
+        <span *ngIf=" form.get('contrasena').hasError('maxLength')">
+          No puede tener menos de 20 carácteres
+        </span>
+      </div>
+    </div>
+
+
+    <div class="form-group col-md-12">
+      <label for="inputZip">Teléfono</label>
+      <input type="text" class="form-control" id="inputtelefono" placeholder="Teléfono">
+    </div>
+
+    <div class="form-group col-md-12">
+      <label for="inputZip">Género</label>
+      <select class="form-control">
+        <option>Masculino</option>
+        <option>Femenino</option>
+        <option>Indefinido</option>
+      </select>
+    </div>
+
+    <div class="form-group col-md-12">
+      <label for="inputZip">Ciudad</label>
+      <input type="text" class="form-control" id="inputciudad" placeholder="Ciudad">
+    </div>
+
+    <div class="d-flex justify-content-center p-3">
+      <button routerLink="/home" (click)="Registrar()" [disabled]="!form.valid" type="button" class="btn btn-primary">Registrarse!</button>
+
+    </div>
+  </form>
+</div>
+-->
+
+<div class="container">
+  <div class="jumbotron">
+    <h1>Formulario de Registro</h1>
+    <h5>Luego de registrarte podrás acceder a nuestra aplicación TuOfertaAPP</h5>
+    <div class="d-flex justify-content-center" *ngFor="let i of persona">
+      <!--
+          <form [formGroup]="form" (ngSubmit)="registrar(reg)" class="form-signin" #reg="ngForm" *ngFor="let i of datos">
+          -->
+      <div class="row">
+        <form (ngSubmit)="registrar()" class="form-signin col-xs-12 col-sm-12 col-md-12 col-lg-12 col" #reg="ngForm">
+          <!--
+            <div class="row">
+        
+              <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col">
+                <label for="inputZip">ID</label>
+                <input type="text" class="form-control" id="inputid" [(ngModel)]="i.id" [ngModelOptions]="{standalone: true}">
+              </div>
+        
+            </div>
+          -->
+          <div class="row">
+
+            <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col">
+              <label for="inputZip">Nombre</label>
+              <input type="text" class="form-control" name="nombre" id="inputnombre" [(ngModel)]="i.nombre"
+                [ngModelOptions]="{standalone: true}">
+
+            </div>
+
+            <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col">
+              <label for="inputapellidos">Apellidos</label>
+              <input type="text" class="form-control" name="apellidos" id="inputapellidos" [(ngModel)]="i.apellidos"
+                [ngModelOptions]="{standalone: true}">
+            </div>
+          </div>
+          <div class="row">
+
+            <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col">
+              <label for="inputZip">Correo</label>
+              <input type="text" class="form-control" id="inputcorreo" [(ngModel)]="i.correo" [ngModelOptions]="{standalone: true}">
+            </div>
+
+
+            <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col">
+              <label for="inputZip">Contraseña</label>
+              <input type="password" class="form-control" id="inputcontrasena" [(ngModel)]="i.contrasena"
+                [ngModelOptions]="{standalone: true}">
+            </div>
+
+          </div>
+          <div class="row">
+
+            <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 col">
+              <label for="inputZip">Teléfono</label>
+              <input type="text" class="form-control" id="inputtelefono" [(ngModel)]="i.telefono" [ngModelOptions]="{standalone: true}">
+            </div>
+
+
+            <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 col">
+              <label for="inputZip">Género</label>
+              <select class="form-control" id="selectgenero" [(ngModel)]="i.genero" [ngModelOptions]="{standalone: true}">
+                <option selected="selected">Masculino</option>
+                <option>Femenino</option>
+                <option>Indefinido</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+
+            <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 col">
+              <label for="inputZip">Ciudad</label>
+              <input type="text" class="form-control" id="inputciudad" [(ngModel)]="i.ciudad" [ngModelOptions]="{standalone: true}">
+            </div>
+
+            <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 col">
+              <label for="selectrol">Rol</label>
+              <select class="form-control selectpicker" id="selectrol" [(ngModel)]="i.rol" [ngModelOptions]="{standalone: true}">
+                <option>Usuario</option>
+                <option>Administrador</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-center p-3">
+            <button class="btn btn-lg btn-primary btn-block" type="submit" class="btn btn-primary">Registrarse</button>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+<footer>
+  <p>TuOfertaAPP® 2018© </p>
+</footer>
